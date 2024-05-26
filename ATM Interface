@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+class UserAccount{
+    int bal= 20000;
+}
+
+public class ATM extends UserAccount{
+    public void deposit(int amount){
+        bal+=amount;
+        System.out.println(amount + " is deposited in your account");
+        System.out.println("Your account balance is "+bal);
+    }
+    public void withdraw(int amount){
+        if(amount<bal){
+            bal-=amount;
+            System.out.println(amount+" is withdrawn from your account");
+            System.out.println("Your account balance is "+bal);
+        } else{
+            System.out.println("Your balance is insufficient for withdrawals");
+            System.out.println("Your account balance is "+bal);
+        }
+    }
+    public void checkBalance(){
+        System.out.println("Your account balance is "+bal);
+    }
+
+    public static void main(String[] args) {
+        ATM at= new ATM();
+        Scanner sc= new Scanner(System.in);
+        System.out.println("\t Choose your option ");
+        System.out.println("1:Deposit 2:Withdraw 3:Check balance");
+        int a= sc.nextInt();
+
+        if (a == 1) {
+            System.out.print("Enter the amount to deposit: ");
+            int b = sc.nextInt();
+            at.deposit(b);
+        } else if (a == 2) {
+            System.out.print("Enter the amount to withdraw: ");
+            int c = sc.nextInt();
+            at.withdraw(c);
+        } else {
+            at.checkBalance();
+        }
+    }
+}
